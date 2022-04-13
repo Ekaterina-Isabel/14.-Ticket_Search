@@ -69,7 +69,7 @@ class TicketManagerTest {
     }
 
     @Test
-    void shouldSearchTicketByFrom() {     //найди билет по аэропорту вылета и прилета
+    void shouldSearchTicketByFromTo() {     //найди билет по аэропорту вылета и прилета
         repository.save(ticket1);
         repository.save(ticket2);
         repository.save(ticket3);
@@ -92,7 +92,7 @@ class TicketManagerTest {
     }
 
     @Test
-    void shouldNoSearchTicketByEmptySearch() {     //найди билет по аэропорту вылета, нет такого билета
+    void shouldSearchTicketByEmptySearch() {     //найди все билеты по пустому фильтру
         repository.save(ticket1);
         repository.save(ticket2);
         repository.save(ticket3);
@@ -104,7 +104,7 @@ class TicketManagerTest {
     }
 
     @Test
-    void shouldNoSearchTicket() {     //найди билет по аэропорту вылета, нет такого билета
+    void shouldNoSearchTicketInEmptyRepository() {     //не должен найди билет по аэропорту вылета в пустом репозитории
 
         Ticket[] expected = {};
         Ticket[] actual = manager.findAll("VKO", "KZN");
